@@ -1,2 +1,8 @@
-TASK 1 :- Develop Average Calculator HTTP Microservice
-TASK 2 :- Develop a Social Media Analytics HTTP Microservice
+**Backend Project:**
+
+This repository contains two HTTP microservices:
+
+Task 1: Average Calculator Microservice
+
+Task 2: Social Media Analytics Microservice
+
