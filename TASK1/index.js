@@ -1,10 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 const app = express();
 
 const PORT = 9876;
 const WINDOW_SIZE = 10;
-
 
 let numberWindow = [];
 
@@ -15,17 +16,19 @@ const API_URLS = {
     r: 'http://20.244.56.144/evaluation-service/rand'
 };
 
+app.use(cors());
+
 const fetchNumbers = async (id) => {
     try {
         const res = await axios.get(API_URLS[id], {
             timeout: 500,
             headers: {
-                Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzQ0NzAyMTI2LCJpYXQiOjE3NDQ3MDE4MjYsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjgwZTRlYzBiLWI5YzUtNDQ1Ni1hMWNkLTg1NjU2ZTFjNzE2NSIsInN1YiI6ImF2aWthbTE5OC5iZTIyQGNoaXRrYXJhLmVkdS5pbiJ9LCJlbWFpbCI6ImF2aWthbTE5OC5iZTIyQGNoaXRrYXJhLmVkdS5pbiIsIm5hbWUiOiJhdmlrYW0gYmlyIiwicm9sbE5vIjoiMjIxMDk5MDE5OCIsImFjY2Vzc0NvZGUiOiJQd3p1ZkciLCJjbGllbnRJRCI6IjgwZTRlYzBiLWI5YzUtNDQ1Ni1hMWNkLTg1NjU2ZTFjNzE2NSIsImNsaWVudFNlY3JldCI6Inpta01GQ2RKQ2ZzYk5iWnEifQ.Pmue1fkrwANy1YsputBnBNu7jjRORrf7NUS-5SDHRls"
+                Authorization: `Bearer ${process.env.AUTH_TOKEN}`
             }
         });
         return res.data.numbers || [];
     } catch (err) {
-        console.error(`Error fetching numbers for ID '${id}:`, err.message);
+        console.error(`Error fetching numbers for ID '${id}':`, err.message);
         return [];
     }
 };

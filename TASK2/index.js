@@ -5,7 +5,8 @@ const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const BASE_API_URL = 'http://20.244.56.144/evaluation-service';
-const AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzQ0NzAxNzgxLCJpYXQiOjE3NDQ3MDE0ODEsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6IjgwZTRlYzBiLWI5YzUtNDQ1Ni1hMWNkLTg1NjU2ZTFjNzE2NSIsInN1YiI6ImF2aWthbTE5OC5iZTIyQGNoaXRrYXJhLmVkdS5pbiJ9LCJlbWFpbCI6ImF2aWthbTE5OC5iZTIyQGNoaXRrYXJhLmVkdS5pbiIsIm5hbWUiOiJhdmlrYW0gYmlyIiwicm9sbE5vIjoiMjIxMDk5MDE5OCIsImFjY2Vzc0NvZGUiOiJQd3p1ZkciLCJjbGllbnRJRCI6IjgwZTRlYzBiLWI5YzUtNDQ1Ni1hMWNkLTg1NjU2ZTFjNzE2NSIsImNsaWVudFNlY3JldCI6Inpta01GQ2RKQ2ZzYk5iWnEifQ.VebiZoj0mI09t7coc3uGH_ZeYJetPxJ4qwAQRQEbqBU';
+require('dotenv').config();
+const AUTH_TOKEN = process.env.AUTH_TOKEN;
 
 
 app.use(express.json());
